@@ -34,10 +34,14 @@ const Home = () => {
   }, [cookies, getIcons]);
 
   return (
-    <div className='container'>
+    <div className='page-container'>
       {loading && <Loader />}
       {error && <div>{error}</div>}
-      {!error && cookies['godot-icons']?.map((icon: GithubContentResponse) => <Icon key={icon.sha} {...icon} />)}
+      {!error && cookies['godot-icons']?.length && (
+        <div className="icons-container">
+          {cookies['godot-icons'].map((icon: GithubContentResponse) => <Icon key={icon.sha} {...icon} />)}
+        </div>
+      )}
     </div>
   );
 }
