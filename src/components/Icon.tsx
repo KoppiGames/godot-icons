@@ -40,7 +40,7 @@ const Icon = (props: GithubContentResponse) => {
   }
 
   return <button type="button" className="icon" onClick={copyIconName}>
-    {!copySuccess && <span className="copy">
+    {!copySuccess && props.name !== 'ActionCopy.svg' && <span className="copy">
       <img src={'/img/copy-icon.svg'} alt="Copy" />
       </span>}
     {copySuccess && <span className="copy-success">Copied!</span>}
