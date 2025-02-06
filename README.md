@@ -11,11 +11,12 @@ This project fetches all [Godot editor icons](https://github.com/godotengine/god
 ### Features
 - **Browse Icons** – View all available Godot editor icons in a clean UI.
 - **Copy Names** – Click on an icon to quickly copy its name.
-- ⬇**Download SVG** – Download the full SVG file of any icon.
+- **Download SVG** – Download the full SVG file of any icon.
 
 ### Future Improvements
 - **Fuzzy Search** – A search bar to find icons more efficiently.  
 - **Documentation Links** – Quick access to guides on using and creating custom icons.
+- **Lazy loading** - Improved image loading for better performance.
 
 ## 💻 Running Locally
 
