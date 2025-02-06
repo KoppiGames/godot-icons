@@ -37,9 +37,9 @@ const Home = () => {
     <div className='page-container'>
       {loading && <Loader />}
       {error && <div>{error}</div>}
-      {!error && cookies['godot-icons']?.length && (
+      {!error && !loading && cookies['godot-icons']?.length && (
         <div className="icons-container">
-          {cookies['godot-icons'].map((icon: GithubContentResponse) => <Icon key={icon.sha} {...icon} />)}
+          {cookies['godot-icons'].map((icon: GithubContentResponse, index: number) => <Icon key={`${icon.sha}_${index}`} {...icon} />)}
         </div>
       )}
     </div>

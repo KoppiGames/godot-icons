@@ -1,7 +1,8 @@
 :root {
   --color-background: #5C5470;
-  --color-primary: #B9B4C7;
-  --color-primary-dark: #352F44;
+  --color-primary-light: #B9B4C7;
+  --color-primary: #352F44;
+  --color-primary-dark: #2A2434;
   --color-highlight: #FAF0E6;
   --color-text: #ececec;
   --icon-size: 150px;
@@ -71,21 +72,94 @@ body {
 }
 
 .icon {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--icon-size);
   height: var(--icon-size);
   overflow: hidden;
-  border-radius: 20px;
-  background-color: var(--color-primary-dark);
+  border-radius: 10px;
+  background-color: var(--color-primary);
   padding: 10px;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+  border: none;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
+
+  .copy, .copy-success {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-primary-dark);
+    color: var(--color-highlight);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1rem;
+
+    img {
+      width: calc(var(--icon-size) / 4);
+      height: calc(var(--icon-size) / 4);
+      object-fit: contain;
+    }
+  }
+
+  .icon-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    background-color: var(--color-primary-dark);
+    color: var(--color-highlight);
+    padding: 5px;
+    text-align: center;
+    font-size: 0.8rem;
+    word-break: break-all;
+  }
+
+  .download-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    background-color: var(--color-primary-dark);
+    color: var(--color-highlight);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+  }
+}
+
+.icon:hover {
+  .copy, .copy-success {
+    opacity: 1;
+  }
+
+  .icon-name, .download-button {
+    transform: translateY(0);
+  }
+}
+
+.download-button:hover {
+  background-color: var(--color-primary-light);
 }
 
 /* Small devices (landscape phones, 576px and up) */
