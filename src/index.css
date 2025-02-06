@@ -21,6 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-background);
   color: var(--color-text);
+  overflow-y: auto !important;
 }
 
 .loader-container {
@@ -186,8 +187,8 @@ body {
       transform: translateY(100%);
       opacity: 1;
       img {
-        width: calc(var(--icon-size) / 4);
-        height: calc(var(--icon-size) / 4);
+        width: calc(var(--icon-size) / 6);
+        height: calc(var(--icon-size) / 6);
       }
     }
   
