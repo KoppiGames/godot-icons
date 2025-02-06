@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
 import { fetchIcons } from '../api/github';
 import Loader from '../components/Loader';
 import { GithubContentResponse } from '../types/Github';
 import Icon from '../components/Icon';
 
 const Home = () => {
-  const [cookies, setCookies] = useCookies(['godot-icons']);
+  const [icons, setIcons] = useState<GithubContentResponse[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,23 +22,20 @@ const Home = () => {
       setError(error);
       return;
     }
-    setCookies('godot-icons', data, {
-      expires: new Date(Date.now() + 2)
-    });
-  }, [setCookies]);
+    setIcons(data ?? []);
+  }, []);
 
   useEffect(() => {
-    if (cookies['godot-icons']) return
     getIcons();
-  }, [cookies, getIcons]);
+  }, [getIcons]);
 
   return (
     <div className='page-container'>
       {loading && <Loader />}
       {error && <div>{error}</div>}
-      {!error && !loading && cookies['godot-icons']?.length && (
+      {!error && !loading && !!icons?.length && (
         <div className="icons-container">
-          {cookies['godot-icons'].map((icon: GithubContentResponse, index: number) => <Icon key={`${icon.sha}_${index}`} {...icon} />)}
+          {icons.map((icon: GithubContentResponse, index: number) => <Icon key={`${icon.sha}_${index}`} {...icon} />)}
         </div>
       )}
     </div>
